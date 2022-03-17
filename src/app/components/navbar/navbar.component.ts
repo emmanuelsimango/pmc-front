@@ -1,16 +1,19 @@
-import { CartItem } from './../../models/cart-item';
-import { CartServiceService } from './../../services/cart-service.service';
-import { AuthService } from './../../services/auth/auth.service';
+import { FormBuilder, Validators } from "@angular/forms";
+import { CartItem } from "./../../models/cart-item";
+import { CartServiceService } from "./../../services/cart-service.service";
+import { AuthService } from "./../../services/auth/auth.service";
 import { Component, OnInit, ElementRef, OnDestroy } from "@angular/core";
 import { ROUTES } from "../sidebar/sidebar.component";
 import { Location } from "@angular/common";
 import { Router } from "@angular/router";
-import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
+import { FormGroup } from "@angular/forms";
+import { Package } from "src/app/models/package";
 
 @Component({
   selector: "app-navbar",
   templateUrl: "./navbar.component.html",
-  styleUrls: ["./navbar.component.css"]
+  styleUrls: ["./navbar.component.css"],
 })
 export class NavbarComponent implements OnInit, OnDestroy {
   private listTitles: any[];
@@ -20,42 +23,48 @@ export class NavbarComponent implements OnInit, OnDestroy {
   private sidebarVisible: boolean;
 
   public isCollapsed = true;
-  cart:CartItem[]
+  cart: CartItem[];
   closeResult: string;
+
+  packageForm: FormGroup;
+  packageFormSubmitted: boolean;
 
   constructor(
     location: Location,
     private element: ElementRef,
     private router: Router,
     private modalService: NgbModal,
-    private auth:AuthService,
-    private cartService:CartServiceService
+    private auth: AuthService,
+    private cartService: CartServiceService,
+    private packageFormBuilder: FormBuilder
   ) {
     this.location = location;
     this.sidebarVisible = false;
 
-    this.cartService.cart.subscribe(cart => this.cart = cart);
-
+    this.cartService.cart.subscribe((cart) => (this.cart = cart));
   }
   // function that adds color white/transparent to the navbar on resize (this is for the collapse)
-   updateColor = () => {
-   var navbar = document.getElementsByClassName('navbar')[0];
-     if (window.innerWidth < 993 && !this.isCollapsed) {
-       navbar.classList.add('bg-white');
-       navbar.classList.remove('navbar-transparent');
-     } else {
-       navbar.classList.remove('bg-white');
-       navbar.classList.add('navbar-transparent');
-      }
-    };
-    ngOnInit() {
-      this.cart = this.cartService.getCart();
-
+  updateColor = () => {
+    var navbar = document.getElementsByClassName("navbar")[0];
+    if (window.innerWidth < 993 && !this.isCollapsed) {
+      navbar.classList.add("bg-white");
+      navbar.classList.remove("navbar-transparent");
+    } else {
+      navbar.classList.remove("bg-white");
+      navbar.classList.add("navbar-transparent");
+    }
+  };
+  ngOnInit() {
+    this.cart = this.cartService.getCart();
+    this.packageForm = this.packageFormBuilder.group({
+      mobile: ["", Validators.required],
+      package_name: ["", Validators.required],
+    });
     window.addEventListener("resize", this.updateColor);
-    this.listTitles = ROUTES.filter(listTitle => listTitle);
+    this.listTitles = ROUTES.filter((listTitle) => listTitle);
     const navbar: HTMLElement = this.element.nativeElement;
     this.toggleButton = navbar.getElementsByClassName("navbar-toggler")[0];
-    this.router.events.subscribe(event => {
+    this.router.events.subscribe((event) => {
       this.sidebarClose();
       var $layer: any = document.getElementsByClassName("close-layer")[0];
       if ($layer) {
@@ -63,6 +72,54 @@ export class NavbarComponent implements OnInit, OnDestroy {
         this.mobile_menu_visible = 0;
       }
     });
+
+
+  }
+
+  onPackageSubmit() {
+    this.packageFormSubmitted = true;
+    alert("asdas");
+    console.log(this.packageForm);
+
+
+    if (this.packageForm.invalid) {
+      console.log(this.packageForm);
+
+      return
+    }
+
+
+    const pack: Package = {
+      package_name: this.packageForm.get('package_name').value,
+      package_frequency_id: 1,
+      user_id: this.auth.getUser().user_id,
+      recipient: this.packageForm.get("mobile").value,
+      token: "",
+      items_list: [
+      ],
+    };
+
+    console.log(JSON.stringify(pack.items_list));
+
+    this.cart.forEach(item=>{
+      pack.items_list.push({
+        product_definition_id:item.package.product_definition_id,
+        quantity: item.quantity
+      })
+    })
+
+    // this.packageService.getCostPackage(pack.items_list).subscribe((cost) => {
+    //   if (cost.usd_cost) {
+    //     this.amount = cost.usd_cost;
+    //     this.pay(pack, this.packageService, this.toastrService);
+    //   }
+    // });
+
+    this.cartService.checkout(pack);
+    this.packageForm.reset();
+    this.cart = [];
+    localStorage.setItem('cart',JSON.stringify([]));
+
   }
 
   collapse() {
@@ -77,8 +134,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
     }
   }
 
-  logout(){
-    this.auth.logout()
+  logout() {
+    this.auth.logout();
   }
   sidebarOpen() {
     const toggleButton = this.toggleButton;
@@ -90,7 +147,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
       mainPanel.style.position = "fixed";
     }
 
-    setTimeout(function() {
+    setTimeout(function () {
       toggleButton.classList.add("toggled");
     }, 500);
 
@@ -106,7 +163,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     );
 
     if (window.innerWidth < 991) {
-      setTimeout(function() {
+      setTimeout(function () {
         mainPanel.style.position = "";
       }, 500);
     }
@@ -131,13 +188,13 @@ export class NavbarComponent implements OnInit, OnDestroy {
       if ($layer) {
         $layer.remove();
       }
-      setTimeout(function() {
+      setTimeout(function () {
         $toggle.classList.remove("toggled");
       }, 400);
 
       this.mobile_menu_visible = 0;
     } else {
-      setTimeout(function() {
+      setTimeout(function () {
         $toggle.classList.add("toggled");
       }, 430);
 
@@ -152,16 +209,16 @@ export class NavbarComponent implements OnInit, OnDestroy {
           .appendChild($layer);
       }
 
-      setTimeout(function() {
+      setTimeout(function () {
         $layer.classList.add("visible");
       }, 100);
 
-      $layer.onclick = function() {
+      $layer.onclick = function () {
         //asign a function
         html.classList.remove("nav-open");
         this.mobile_menu_visible = 0;
         $layer.classList.remove("visible");
-        setTimeout(function() {
+        setTimeout(function () {
           $layer.remove();
           $toggle.classList.remove("toggled");
         }, 400);
@@ -187,23 +244,32 @@ export class NavbarComponent implements OnInit, OnDestroy {
   }
 
   open(content) {
-    this.modalService.open(content, {windowClass: 'modal-search'}).result.then((result) => {
-      this.closeResult = `Closed with: ${result}`;
-    }, (reason) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-    });
+    this.modalService
+      .open(content, { windowClass: "modal-search" })
+      .result.then(
+        (result) => {
+          this.closeResult = `Closed with: ${result}`;
+        },
+        (reason) => {
+          this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+        }
+      );
   }
 
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
+      return "by pressing ESC";
     } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
+      return "by clicking on a backdrop";
     } else {
-      return  `with: ${reason}`;
+      return `with: ${reason}`;
     }
   }
-  ngOnDestroy(){
-     window.removeEventListener("resize", this.updateColor);
+  ngOnDestroy() {
+    window.removeEventListener("resize", this.updateColor);
+  }
+
+  get f() {
+    return this.packageForm.controls;
   }
 }

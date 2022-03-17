@@ -1,3 +1,5 @@
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { NavbarAuthComponent } from './auth/navbar/navbar.component';
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
@@ -11,7 +13,7 @@ import { AuthFooterComponent } from './auth/auth-footer/auth-footer.component';
 import { CartIconComponent } from './cart-icon/cart-icon.component';
 
 @NgModule({
-  imports: [CommonModule, RouterModule, NgbModule],
+  imports: [CommonModule, RouterModule, NgbModule,ReactiveFormsModule,FormsModule],
   declarations: [FooterComponent, NavbarComponent, SidebarComponent,NavbarAuthComponent, AuthFooterComponent, CartIconComponent
   ],
   exports: [FooterComponent, NavbarComponent, SidebarComponent,NavbarAuthComponent,AuthFooterComponent]

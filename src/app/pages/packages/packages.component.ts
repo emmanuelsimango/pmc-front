@@ -89,7 +89,6 @@ export class PackagesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.loadStripe();
     this.packageForm = this.packageFormBuilder.group({
       data: [10, Validators.required],
       minutes: [10, Validators.required],
@@ -153,68 +152,6 @@ export class PackagesComponent implements OnInit {
     this.cartService.checkout(pack);
   }
 
-  title = "angular-sell-App";
-  sinnhi: string = "awaiting-token";
 
-  pay(pack: Package, service: PackageServiceService, toastr: ToastrService) {
-    var handler = (<any>window).StripeCheckout.configure({
-      key: this.stripe_key,
-      locale: "auto",
-      token: function (token: any) {
-        // You can access the token ID with `token.id`.
-        // Get the token ID to your server-side code for use.
-        console.log("Token Racho After-Pay : ", token.id);
-        pack.token = token.id;
-        console.log(pack);
-
-        service.savePackage(pack).subscribe(
-          (response) => {
-            toastr.success("Package Created Successfully", "Package created");
-
-            if (response.success) {
-
-            }
-          },
-          (error) => {
-            console.log(error);
-
-            toastr.error(
-              "Package Failed creating: " + error.error,
-              "Package created"
-            );
-          }
-        );
-      },
-    });
-
-    handler.open({
-      name: pack.package_name,
-      description: `Package payment for ${pack.package_name}`,
-      amount: this.amount,
-    });
-  }
-
-  loadStripe() {
-    if (!window.document.getElementById("stripe-script")) {
-      var s = window.document.createElement("script");
-      s.id = "stripe-script";
-      s.type = "text/javascript";
-      s.src = "https://checkout.stripe.com/checkout.js";
-      s.onload = () => {
-        this.handler = (<any>window).StripeCheckout.configure({
-          key: this.packageService.getStripeKey(),
-          locale: "auto",
-          token: function (token: any) {
-            // You can access the token ID with `token.id`.
-            // Get the token ID to your server-side code for use.
-            console.log("Token Racho During Load: ", token.id);
-            alert("Payment Success!!");
-          },
-        });
-      };
-
-      window.document.body.appendChild(s);
-    }
-  }
 }
 
