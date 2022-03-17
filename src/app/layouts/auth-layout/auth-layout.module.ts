@@ -1,3 +1,6 @@
+import { ComponentsModule } from './../../components/components.module';
+import { HomeComponent } from './../../pages/landing/home/home.component';
+import { ProductsComponent } from './../../pages/landing/products/products.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
@@ -15,10 +18,12 @@ import { HttpClientModule } from "@angular/common/http";
     RouterModule.forChild(AuthLayoutRoutes),
     FormsModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
+    ComponentsModule
   ],
   declarations: [
-
+    ProductsComponent,
+    HomeComponent,
   ]
 })
 export class AuthLayoutModule { }

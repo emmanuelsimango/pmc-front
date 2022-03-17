@@ -1,19 +1,19 @@
-import { CartEvent } from './../../models/cart-event';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { CartEvent } from 'src/app/models/cart-event';
 import { PredefinedPackage } from 'src/app/models/predefined-package';
 import { PackageServiceService } from 'src/app/services/package-service.service';
 
 @Component({
-  selector: 'app-pre-products',
-  templateUrl: './pre-products.component.html',
-  styleUrls: ['./pre-products.component.scss']
+  selector: 'app-pre-products-telone',
+  templateUrl: './pre-products-telone.component.html',
+  styleUrls: ['./pre-products-telone.component.scss']
 })
-export class PreProductsComponent implements OnInit {
+export class PreProductsTeloneComponent implements OnInit {
   @Output() clickedProduct = new EventEmitter<CartEvent>();
 
   packages:PredefinedPackage[];
   constructor(private packageService:PackageServiceService) {
-    this.packageService.getPredefinedDataPackages().subscribe(data=>{
+    this.packageService.getPredefinedTelOneDataPackages().subscribe(data=>{
       // console.log(data);
 
       this.packages = data

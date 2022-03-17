@@ -53,30 +53,28 @@ export class CartServiceService {
       if (
         cart.some((cart) => cart.package.product_definition_id == prod_id)
       ) {
-        const item = cart.find(
-          (cart) => cart.package.product_definition_id == prod_id
-        );
-        item.quantity =   item.quantity+ item.package.quantity
+        // const item = cart.find(
+        //   (cart) => cart.package.product_definition_id == prod_id
+        // );
+        // item.quantity =   item.quantity+ item.package.quantity
       } else {
         cart.push({ package: event.product, quantity: event.product.quantity });
       }
-      // this.cart = this.cart.filter(cart=>{
-      //   cart.package.product_definition_id
-      // })
+
     } else {
       if (
         cart.some((cart) => cart.package.product_definition_id == prod_id)
       ) {
-        const item = cart.find(
-          (cart) => cart.package.product_definition_id == prod_id
-        );
-        if (item.quantity > 0) {
-          item.quantity = item.quantity+ item.package.quantity ;
-        } else {
+        // const item = cart.find(
+        //   (cart) => cart.package.product_definition_id == prod_id
+        // );
+        // if (item.quantity > 0) {
+        //   item.quantity = item.quantity+ item.package.quantity ;
+        // } else {
           cart = cart.filter(cart=>{
           return  cart.package.product_definition_id !=prod_id
           })
-        }
+        // }
       }
     }
 

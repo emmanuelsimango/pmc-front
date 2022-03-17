@@ -1,8 +1,9 @@
+import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from "@angular/core";
 import { HttpClientModule } from "@angular/common/http";
 import { RouterModule } from "@angular/router";
 import { CommonModule } from "@angular/common";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 import { AdminLayoutRoutes } from "./admin-layout.routing";
 import { DashboardComponent } from "../../pages/dashboard/dashboard.component";
@@ -18,6 +19,10 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { HomeComponent } from "src/app/pages/landing/home/home.component";
 import { PackagesComponent } from "src/app/pages/packages/packages.component";
 import { NgBytesPipeModule } from 'angular-pipes';
+import { ElectricityComponent } from "src/app/pages/electricity/electricity.component";
+import { ProductsComponent } from "src/app/pages/landing/products/products.component";
+import { PreProductsComponent } from "src/app/pages/pre-products/pre-products.component";
+import { PreProductsTeloneComponent } from 'src/app/pages/pre-products-telone/pre-products-telone.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -25,6 +30,7 @@ import { NgBytesPipeModule } from 'angular-pipes';
     FormsModule,
     HttpClientModule,
     NgbModule,
+    ReactiveFormsModule,
 
   ],
   declarations: [
@@ -35,7 +41,10 @@ import { NgBytesPipeModule } from 'angular-pipes';
     TypographyComponent,
     NotificationsComponent,
     MapComponent,
-
+    PackagesComponent,
+    ElectricityComponent,
+    PreProductsComponent,
+     PreProductsTeloneComponent ,
     // RtlComponent
   ]
 })

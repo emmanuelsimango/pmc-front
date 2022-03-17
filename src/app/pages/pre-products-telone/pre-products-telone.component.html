@@ -1,31 +1,31 @@
 <div id="wrapper ">
     <div id="carousel">
-        <h6 class="mb-0">Pre-Configured Packages</h6>
+        <h6 class="mb-0">TelOne Packages</h6>
         <div id="content" class=" pt-4">
             <div class="col-md-2 pt-4" *ngFor="let package of packages" style="min-width:250px">
                 <span class="card-price">
-          {{ package.quantity | currency }}
-        </span>
+        {{ package.quantity | currency }}
+      </span>
 
                 <div class="card">
                     <div class="card-body">
                         <div class="mb-0 pb-0 justify-content-between">
                             <span>
 
-                            {{ package.network }}
-                          </span>
+                          {{ package.network }}
+                        </span>
                             <span class="badge badge-success rounded-circle p-1 float float-right cursor-pointer" (click)="onClickedProduct(package,true)">
-                                    <i class="fa fa-plus" aria-hidden="true"></i>
-                                  </span>
+                                  <i class="fa fa-plus" aria-hidden="true"></i>
+                                </span>
                         </div>
                         <div class="justify-content-between">
                             <span class="h5" [title]="package.bundle_name">
 
-                            {{ package.bundle_name |slice:0:25 }}
-                          </span>
+                          {{ package.bundle_name |slice:0:25 }}
+                        </span>
                             <span class="badge badge-default rounded-circle  p-1 float float-right cursor-pointer" (click)="onClickedProduct(package,false)">
-                                  <i class="fa fa-minus" aria-hidden="true"></i>
-                              </span>
+                                <i class="fa fa-minus" aria-hidden="true"></i>
+                            </span>
                         </div>
                         <!-- <div> -->
                         <!-- </div> -->
@@ -36,15 +36,15 @@
         </div>
     </div>
     <button id="prev">
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-      <path fill="none" d="M0 0h24v24H0V0z" />
-      <path d="M15.61 7.41L14.2 6l-6 6 6 6 1.41-1.41L11.03 12l4.58-4.59z" />
-    </svg>
-  </button>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+    <path fill="none" d="M0 0h24v24H0V0z" />
+    <path d="M15.61 7.41L14.2 6l-6 6 6 6 1.41-1.41L11.03 12l4.58-4.59z" />
+  </svg>
+</button>
     <button id="next">
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-      <path fill="none" d="M0 0h24v24H0V0z" />
-      <path d="M10.02 6L8.61 7.41 13.19 12l-4.58 4.59L10.02 18l6-6-6-6z" />
-    </svg>
-  </button>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+    <path fill="none" d="M0 0h24v24H0V0z" />
+    <path d="M10.02 6L8.61 7.41 13.19 12l-4.58 4.59L10.02 18l6-6-6-6z" />
+  </svg>
+</button>
 </div>

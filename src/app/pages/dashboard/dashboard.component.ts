@@ -27,7 +27,9 @@ export class DashboardComponent implements OnInit {
     this.currentUser = this.auth.getUser()
 
   }
+  onAddProduct(){
 
+  }
   ngOnInit() {
     var gradientChartOptionsConfigurationWithTooltipBlue: any = {
       maintainAspectRatio: false,

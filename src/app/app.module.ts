@@ -21,6 +21,7 @@ import { NgBytesPipeModule } from 'angular-pipes';
 import { ProductsComponent } from './pages/landing/products/products.component';
 import { ElectricityComponent } from './pages/electricity/electricity.component';
 import { PreProductsComponent } from './pages/pre-products/pre-products.component';
+import { PreProductsTeloneComponent } from './pages/pre-products-telone/pre-products-telone.component';
 
 @NgModule({
   imports: [
@@ -36,11 +37,8 @@ import { PreProductsComponent } from './pages/pre-products/pre-products.componen
     ToastrModule.forRoot(),
     NgBytesPipeModule
   ],
-  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent, LoginComponent ,   HomeComponent,
-    PackagesComponent,
-    ProductsComponent,
-    ElectricityComponent,
-    PreProductsComponent],
+  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent, LoginComponent,
+],
   providers: [],
   bootstrap: [AppComponent]
 })

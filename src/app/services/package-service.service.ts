@@ -79,6 +79,12 @@ export class PackageServiceService {
       `${this.serverDetails.api}/package-categories/predefined-list`
     );
   }
+  getPredefinedTelOneDataPackages() {
+
+    return this._http.get<PredefinedPackage[]>(
+      `${this.serverDetails.api}/package-categories/predefined-list`
+    );
+  }
 
   getStripeKey() {
     return this._http.get<GeneralResponse>(
