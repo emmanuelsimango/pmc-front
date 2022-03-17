@@ -1,0 +1,63 @@
+/* You can add global styles to this file, and also import other style files */
+
+:root {
+    --color-p: #3a5cd1;
+    --color-white: #fff;
+    --color-light-gray: #eff2f5;
+    --color-mid-gray: #96a0b5;
+    --color-dark-gray: #6d7d93;
+    --color-dark: #182550;
+    --color-red: #d13a3a;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Dongle:wght@300;400;700&family=Montserrat:wght@400;500;700&family=Orbitron&family=Prompt:wght@400;500;700&display=swap");
+@mixin transition($properties: all,
+$duration: 0.3s,
+$easing: ease-out) {
+    @if length($properties)>1 {
+        transition-property: $properties;
+        transition-duration: $duration;
+        transition-timing-function: $easing;
+    }
+    @else {
+        transition: $properties $duration $easing;
+    }
+}
+
+html {
+    font-size: 24px;
+}
+
+body {
+    background: var(--color-white);
+    color: var(--color-dark);
+    font-family: Dongle, sans-serif !important;
+    line-height: 1.3rem;
+}
+
+h1 {
+    font-size: 2.441rem;
+    line-height: 1.4rem;
+}
+
+h2 {
+    font-size: 1.953rem;
+}
+
+h3 {
+    font-size: 1.563rem;
+}
+
+h4 {
+    font-size: 1.25rem;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.btn-primary {
+    background: none !important;
+    background-color: #4856A4 !important;
+    background-image: none !important;
+}

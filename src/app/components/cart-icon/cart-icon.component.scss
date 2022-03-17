@@ -1,0 +1,104 @@
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+@function rem($value) {
+    @return unquote(($value/1px)/16+'rem');
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cart-btn {
+    padding: 16px 32px;
+    border: 0;
+    border-radius: 4px;
+    background-color: #212121;
+    color: #efefef;
+    text-transform: uppercase;
+    cursor: pointer;
+    outline: 0;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
+    transition: all ease 0.5s;
+    position: relative;
+    margin: 14px;
+    &:hover {
+        background-color: darken(#212121, 4%);
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+    .count {
+        position: absolute;
+        height: 20px;
+        width: 20px;
+        display: inline-flex;
+        top: 0;
+        left: 100%;
+        transform: translate(-50%, -50%);
+        background-color: #85cb33;
+        justify-content: center;
+        align-items: center;
+        color: #212121;
+        font-size: 14px;
+        border-radius: 400px;
+        transition: all ease 1s;
+        z-index: 1;
+    }
+}
+
+.cart {
+    // position: absolute;
+    // top: 20%;
+    // left: 20%;
+    // margin: auto;
+    // border-radius: 4px;
+    // height: 60px;
+    // width: 60px;
+    // display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #efefef;
+    // margin: 15px;
+    font-size: 20px;
+    color: #efefef;
+    .count {
+        position: absolute;
+        height: 30px;
+        width: 30px;
+        background-color: #85cb33;
+        border-radius: 500px;
+        font-size: 14px;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        top: 0px;
+        right: 0px;
+        color: #100b00;
+        transform: translate(50%, -50%);
+        z-index: 1;
+    }
+}
+
+.btn {
+    padding: 16px 32px;
+    border: 0;
+    border-radius: 4px;
+    background-color: #4caf50;
+    color: #ffffff;
+    text-transform: uppercase;
+    cursor: pointer;
+    outline: 0;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
+    transition: all ease 0.5s;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: auto;
+    &:hover {
+        background-color: darken(#4caf50, 4%);
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+}
