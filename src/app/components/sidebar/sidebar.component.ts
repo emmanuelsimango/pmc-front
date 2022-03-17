@@ -1,3 +1,4 @@
+import { AuthService } from './../../services/auth/auth.service';
 import { Component, OnInit } from "@angular/core";
 
 declare interface RouteInfo {
@@ -82,10 +83,18 @@ export const ROUTES: RouteInfo[] = [
 export class SidebarComponent implements OnInit {
   menuItems: any[];
 
-  constructor() {}
+  constructor(private authService: AuthService) {}
 
   ngOnInit() {
     this.menuItems = ROUTES.filter(menuItem => menuItem);
+    if(this.authService.getUser().user_type==1){
+    this.menuItems.push( {
+      path: "/exchange-rates",
+      title: "Exchange Gonzo",
+      rtlTitle: "",
+      icon: "icon-single-02",
+      class: ""
+    })}
   }
   isMobileMenu() {
     if (window.innerWidth > 991) {

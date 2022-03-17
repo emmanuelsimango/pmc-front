@@ -21,6 +21,9 @@ import { NgBytesPipeModule } from 'angular-pipes';
 import { ProductsComponent } from './pages/landing/products/products.component';
 import { ElectricityComponent } from './pages/electricity/electricity.component';
 import { PreProductsComponent } from './pages/pre-products/pre-products.component';
+import { CurrencyListComponent } from './pages/trading-currencies/currency-list/currency-list.component';
+import { AddCurrencyComponent } from './pages/trading-currencies/add-currency/add-currency.component';
+
 
 @NgModule({
   imports: [
@@ -40,7 +43,10 @@ import { PreProductsComponent } from './pages/pre-products/pre-products.componen
     PackagesComponent,
     ProductsComponent,
     ElectricityComponent,
-    PreProductsComponent],
+    PreProductsComponent,
+    CurrencyListComponent,
+    AddCurrencyComponent,
+],
   providers: [],
   bootstrap: [AppComponent]
 })
