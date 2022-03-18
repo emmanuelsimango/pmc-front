@@ -1,0 +1,51 @@
+<div class="content">
+    <div class="row">
+    <div class="col-md-7 col-lg-7 col-sm-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title text-uppercase text-center">
+            Exchange Rates
+          </h4>
+        </div>
+        <div class="card-body">
+          <div class="">
+            <table class="table tablesorter" id="">
+              <thead class="text-primary">
+                <tr>
+                  <th>USD Quote-Value</th>
+                  <th>ZWL Quote-Value</th>
+                  <th class="text-end">Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="font-weight-light" *ngFor="let pack of rates">
+                  <td>{{ pack.usd_quote_currency_value}}
+                  </td>
+                  <td>{{ pack.zwl_quote_currency_value}}
+                  </td>
+                  <td class="text-end">
+                    {{ pack.is_active }}
+                  </td>
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <div class="col-md-5 col-lg-5 col-sm-12">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title text-uppercase text-center">
+          Create new GBP exchange-rate
+        </h4>
+      </div>
+      <div class="card-body">
+<app-add-currency></app-add-currency>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

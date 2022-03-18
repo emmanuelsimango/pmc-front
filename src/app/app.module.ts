@@ -22,6 +22,8 @@ import { ProductsComponent } from './pages/landing/products/products.component';
 import { ElectricityComponent } from './pages/electricity/electricity.component';
 import { PreProductsComponent } from './pages/pre-products/pre-products.component';
 import { PreProductsTeloneComponent } from './pages/pre-products-telone/pre-products-telone.component';
+import { CurrencyListComponent } from './pages/trading-currencies/currency-list/currency-list.component';
+import { AddCurrencyComponent } from './pages/trading-currencies/add-currency/add-currency.component';
 
 @NgModule({
   imports: [
@@ -37,7 +39,7 @@ import { PreProductsTeloneComponent } from './pages/pre-products-telone/pre-prod
     ToastrModule.forRoot(),
     NgBytesPipeModule
   ],
-  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent, LoginComponent,
+  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent, LoginComponent, CurrencyListComponent, AddCurrencyComponent,
 ],
   providers: [],
   bootstrap: [AppComponent]
