@@ -1,3 +1,4 @@
+import { CurrencyListComponent } from './../../pages/trading-currencies/currency-list/currency-list.component';
 import { PackagesComponent } from './../../pages/packages/packages.component';
 import { Routes } from "@angular/router";
 
@@ -19,5 +20,5 @@ export const AdminLayoutRoutes: Routes = [
   { path: "tables", component: TablesComponent },
   { path: "typography", component: TypographyComponent },
   { path: "packages", component: PackagesComponent },
-  // { path: "rtl", component: RtlComponent }
+  { path: "exchange-rates", component: CurrencyListComponent }
 ];

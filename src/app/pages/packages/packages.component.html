@@ -1,46 +1,16 @@
-<div class=" content">
-
-    <!-- <div class="row my-3">
-        <div class="col-md-3">
-            <div class="card">
-                <div class="card-body">
-                    <i class="fa fa-mobile fa-4x" aria-hidden="true"></i> Buy Airtime
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="card">
+<div class="content">
 
 
-    <div class="card-body">
-        <i class="fa fa-globe fa-4x text-success" aria-hidden="true"></i> Buy Data
-    </div>
-</div>
-</div>
-<div class="col-md-3">
-    <div class="card">
-        <div class="card-body">
-            <i class="fa fa-lightbulb fa-4x text-warning" aria-hidden="true"></i> Buy Electricity
-        </div>
-    </div>
-</div>
-<div class="col-md-3">
-    <div class="card">
-        <div class="card-body">
-            <i class="fa fa-envelope fa-4x" aria-hidden="true"></i> Buy Sms
-        </div>
-    </div>
-</div>
-</div> -->
 
 
     <div class="row">
-        <app-pre-products (clickedProduct)="onAddProduct($event)" class="col-sm-12 mx-auto">
+        <app-pre-products (clickedProduct)="onAddProduct($event)" class="col-sm-12
+      mx-auto">
 
         </app-pre-products>
     </div>
 
-    <div class=" row">
+    <div class="row">
         <div class="col-md-7 col-lg-7 col-sm-12">
             <div class="card">
                 <div class="card-header">
@@ -49,15 +19,15 @@
                     </h4>
                 </div>
                 <div class="card-body">
-                    <div class=" ">
-                        <table class=" table tablesorter" id="">
-                            <thead class=" text-primary">
+                    <div class="">
+                        <table class="table tablesorter" id="">
+                            <thead class="text-primary">
                                 <tr>
                                     <th>Name</th>
                                     <th>Product</th>
                                     <th>Frequency</th>
-                                    <th class=" text-center">costs</th>
-                                    <th class=" text-center">action</th>
+                                    <th class="text-center">costs</th>
+                                    <th class="text-center">action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -65,7 +35,8 @@
                                     <td>{{ pack.package_category_name}}
                                     </td>
                                     <td class="py-0">
-                                        <div *ngFor="let item of pack.products" class="d-flex justify-content-between align-items-center py-0">
+                                        <div *ngFor="let item of pack.products" class="d-flex
+                      justify-content-between align-items-center py-0">
                                             <span>
                         {{ item.product }} :
                       </span>
@@ -80,15 +51,15 @@
                       active
                     </span> {{pack.recepient_value }}
                                     </td>
-                                    <td class=" text-center">{{pack.usd_sold_value | currency }}</td>
-                                    <td class=" text-center">
+                                    <td class="text-center">{{pack.usd_sold_value | currency }}</td>
+                                    <td class="text-center">
                                         <div class="dropdown open">
                                             <a class="btn btn-link" type="button" id="triggerId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                 <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
                                             </a>
                                             <div class="dropdown-menu" aria-labelledby="triggerId">
                                                 <a class="dropdown-item" href="#">Action</a>
-                                                <a class="dropdown-item " href="#">Disabled action</a>
+                                                <a class="dropdown-item" href="#">Disabled action</a>
                                             </div>
                                         </div>
                                     </td>
@@ -120,14 +91,16 @@
                             <label for="">Service Provider</label>
                             <select class="form-control text-small py-0" formControlName="provider">
 
-                <option *ngFor="let provider of serviceProviders" [value]="provider.provider_id">
+                <option *ngFor="let provider of serviceProviders"
+                  [value]="provider.provider_id">
                   {{provider.provider_name}}</option>
               </select>
 
                             <div class="form-group">
                                 <label for="">Frequency</label>
                                 <select class="form-control" formControlName="package_frequency_id">
-                  <option *ngFor="let frequency of frequencies" [value]="frequency.frequency_id">
+                  <option *ngFor="let frequency of frequencies"
+                    [value]="frequency.frequency_id">
                     {{frequency.frequency_name}}</option>
                 </select>
                             </div>
@@ -193,4 +166,3 @@
             </div>
         </div>
     </div>
-</div>

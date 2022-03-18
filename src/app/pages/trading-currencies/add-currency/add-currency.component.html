@@ -1,0 +1,20 @@
+<form [formGroup]="rateForm" (submit)="onAddRate()">
+
+    <div class="form-group">
+        <label for="">USD Quote-Value</label>
+        <input type="number" class="form-control" formControlName="usd_quote_currency_value" required>
+        <small class="form-text text-danger float float-right"></small>
+    </div>
+
+    <div class="form-group">
+        <label for="">ZWL Quote-Value</label>
+        <input type="number" class="form-control" formControlName="zwl_quote_currency_value" required>
+        <small class="form-text text-danger float float-right"></small>
+    </div>
+
+    <div class="d-flex-justify-content-end">
+
+        <button class="btn btn-primary text-uppercase btn-small" [disabled]="rateForm.invalid">Save Rate</button>
+    </div>
+
+</form>
