@@ -86,31 +86,40 @@
 
 <ng-template #content let-modal>
     <div class=" modal-header">
-        <input class=" form-control" id="inlineFormInputGroup" placeholder="SEARCH" type="text" />
+        <!-- <input class=" form-control" id="inlineFormInputGroup" placeholder="SEARCH" type="text" />
 
-        <button aria-label="Close" class=" close" data-dismiss="modal" type="button" (click)="modal.dismiss('Cross click')">
-      <i class=" tim-icons icon-simple-remove"> </i>
-    </button>
+        <button aria-label="Close" class=" close" data-dismiss="modal" type="button" (click)="modal.dismiss('Cross click')"> -->
+        <!-- <i class=" tim-icons icon-simple-remove"> </i>
+    </button> -->
     </div>
 
 </ng-template>
 <ng-template #checkout let-modal>
     <div class=" modal-header">
-        <input class=" form-control" id="inlineFormInputGroup" placeholder="SEARCH" type="text" />
-
-        <form>
-
-            <div class="form-group">
-                <label for="">Mobile</label>
-                <input type="number" class="form-control" name="" id="" aria-describedby="helpId" placeholder="0719389333">
-                <!-- <small id="helpId" class="form-text text-muted">Help text</small> -->
-            </div>
+        <!-- <input class=" form-control" id="inlineFormInputGroup" placeholder="SEARCH" type="text" /> -->
 
 
-        </form>
         <button aria-label="Close" class=" close" data-dismiss="modal" type="button" (click)="modal.dismiss('Cross click')">
       <i class=" tim-icons icon-simple-remove"> </i>
     </button>
+    </div>
+    <div class="modal-body">
+        <form class="row" [formGroup]="packageForm" (submit)="onPackageSubmit()">
+
+
+
+            <input type="number" class="form-control border col-md-4 col-sm-12 my-1 " formControlName="mobile" [ngClass]="{'is-invalid':packageFormSubmitted&&f.mobile.invalid}" placeholder="Recipient">
+            <!-- <small id="helpId" class="form-text text-muted">Help text</small> -->
+
+
+            <input type="text" class="form-control border col-md-5 col-sm-12 mx-auto my-1" formControlName="package_name" [ngClass]="{'is-invalid':packageFormSubmitted&&f.package_name.invalid}" placeholder="Reference">
+            <!-- <small id="helpId" class="form-text text-muted">Help text</small> -->
+            <button type="submit" class="btn btn-primary btn-small mx-auto">
+              <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+               Checkout
+            </button>
+
+        </form>
     </div>
 
 </ng-template>
