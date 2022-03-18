@@ -55,8 +55,8 @@ export class PackageServiceService {
   }
 
   savePackage(info: Package) {
-    const data = info;
-
+    const data:any = info;
+    data.recipient = "0" + info.recipient.toString().slice(-9);
     return this._http.post<GeneralResponse>(
       `${this.serverDetails.api}/sales/save-one`,
       info
@@ -109,7 +109,7 @@ export class PackageServiceService {
             console.log(response);
 
             toastr.success("Package Created Successfully", "Package created");
-
+            window.location.reload();
             if (response.success) {
             }
           },

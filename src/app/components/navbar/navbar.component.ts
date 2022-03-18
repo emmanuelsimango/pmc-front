@@ -78,7 +78,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   onPackageSubmit() {
     this.packageFormSubmitted = true;
-    alert("asdas");
+    // alert("asdas");
     console.log(this.packageForm);
 
 
@@ -119,6 +119,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.packageForm.reset();
     this.cart = [];
     localStorage.setItem('cart',JSON.stringify([]));
+    this.modalService.dismissAll();
 
   }
 

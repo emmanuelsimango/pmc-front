@@ -90,7 +90,7 @@ export class PackagesComponent implements OnInit {
 
   ngOnInit(): void {
     this.packageForm = this.packageFormBuilder.group({
-      data: [10, Validators.required],
+      data: [0, Validators.required],
       minutes: [10, Validators.required],
       provider: [1, [Validators.required, Validators.email]],
       mobile: ["", Validators.required],
